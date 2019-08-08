@@ -1,0 +1,49 @@
+{
+  "name": "ts-node",
+  "version": "1.0.0",
+  "description": "scaffold for node and typescript",
+  "main": "build/index.js",
+  "author": "wu",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "yarn build & node build/index.js",
+    "test": "jest --color"
+  },
+  "dependencies": {
+    "@types/jest": "^24.0.17",
+    "@types/node": "^12.7.0",
+    "@typescript-eslint/eslint-plugin": "^1.13.0",
+    "@typescript-eslint/parser": "^1.13.0",
+    "typescript": "^3.5.3",
+    "jest": "^24.8.0",
+    "ts-jest": "^24.0.2",
+    "cz-conventional-changelog": "^3.0.2",
+    "eslint": "^6.1.0",
+    "prettier": "^1.18.2",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^3.0.2",
+    "lint-staged": "^9.2.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "{src,test}/**/*.{js,ts}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "engines": {
+    "node": ">=10.15"
+  }
+}
